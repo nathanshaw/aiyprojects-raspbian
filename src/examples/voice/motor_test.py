@@ -2,18 +2,18 @@
 from gpiozero import PWMOutputDevice as PWM
 from time import sleep
 
-pwm = PWM(4)
+motors = [PWM(4), PWM(17), PWM(27), PWM(22)]
 
 while True:
     print("motor on")
-    pwm.on()
+    motors[0].on()
     sleep(1)
     print("motor off")
-    pwm.off()
+    motors[0].off()
     sleep(1)
     print("motor 50%")
-    pwm.value = 0.5
+    motors[0].value = 0.5
     sleep(2)
     print("motor 20%")
-    pwm.value = 0.2
+    motors[0].value = 0.2
     sleep(2)
