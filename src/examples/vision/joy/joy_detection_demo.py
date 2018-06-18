@@ -25,10 +25,10 @@ import threading
 import time
 
 from aiy._drivers._hat import get_aiy_device_name
-from aiy.leds import Leds
-from aiy.leds import PrivacyLed
 from aiy.toneplayer import TonePlayer
 from aiy.vision.inference import CameraInference
+from aiy.vision.leds import Leds
+from aiy.vision.leds import PrivacyLed
 from aiy.vision.models import face_detection
 
 from contextlib import contextmanager
@@ -263,11 +263,7 @@ class JoyDetector(object):
                     photographer.shoot(camera)
 
                 # Blend the preview layer with the alpha value from the flags.
-                if preview_alpha > 0:
-                    logger.info('Starting preview with alpha %d', preview_alpha)
-                    camera.start_preview(alpha=preview_alpha)
-                else:
-                    logger.info('Not starting preview, alpha 0')
+                camera.start_preview(alpha=preview_alpha)
 
                 button = Button(23)
                 button.when_pressed = take_photo
