@@ -14,20 +14,26 @@ import FaBo9Axis_MPU9250 as DOF
 def main():
     dof = DOF.MPU9250()
 
-    print("initializing system")
-    say("initializing system")
+    print("Dont rock the boat baby!")
+    say("Dont rock the boat baby!")
     sleep(1)
 
+    boat_rocked = 0
+    sens = -0.2
     while True:
         a = dof.readAccel()
         g = dof.readGyro()
         m = dof.readMagnet()
-        print(a)
-        print(g)
-        print(m)
-        if a['x'] < 0 or a['y'] < 0 or a['z'] < 0:
+        print("accel: ", a)
+        print("gyro : ",g)
+        print("mag  : ", m)
+        if a['x'] < sens or a['y'] < sens or a['z'] < sens:
             print("dont rock the boat!")
             say("Hey dont rock the boat!")
+            boat_rocked = boat_rocked + 1;
+            if boat_rocked % 4 == 3:
+                print("BABY!")
+                say("BABY!")
         print("---------------------")
         sleep(0.25)
 

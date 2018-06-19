@@ -28,9 +28,11 @@ def main():
     motion_detector = MotionDetector(24) # servo #5 on hat
     but = aiy.voicehat.get_button()
 
-
+    print("Please connect a HC-SR501 Motion Detector to Servo #5")
+    print("that is the one with the white dome over the sensor")
+    print("----------------------------------------------------")
     print("initializing system")
-    say("initializing system")
+    say("Alarm Bot initializing - Keep your distance")
     sleep(1)
 
     while True:
